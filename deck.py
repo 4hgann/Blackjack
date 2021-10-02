@@ -15,8 +15,7 @@ class deck:
         #Fetch a random card in the current deck
         index = random.randint(0,len(self.cards)-1)
         #Pop this from the deck and return the card for use
-        self.cards.pop(index)
-        return self.cards[index]
+        return self.cards.pop(index)
     
     #Resets the deck when the hand is over
     def restockDeck(self,cards):
