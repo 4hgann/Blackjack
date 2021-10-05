@@ -1,8 +1,9 @@
 from card import *
 
 class player:
-    def __init__(self):
+    def __init__(self,money):
         self.cards = []
+        self.chips = money
 
     def totalValue(self):
         value=0
@@ -23,7 +24,7 @@ class player:
             
 
         return value
-    
+
     def addCard(self, card):
         self.cards.append(card)
         return
@@ -32,29 +33,7 @@ class player:
         self.cards = []
         return
 
-    def printValue(self, cardValue):
-            if cardValue == 1:
-                print("Ace", end="")
-            elif cardValue == 11:
-                print("Jack", end="")
-            elif cardValue == 12:
-                print("Queen", end="")
-            elif cardValue == 13:
-                print("King", end="")
-            else:
-                print(str(cardValue),end="")
-
-    def printSuit(self, suit):
-        if(suit==1):
-            print("Spades",end="")
-        elif(suit==2):
-            print("Hearts",end="")
-        elif(suit==3):
-            print("Clubs",end="")
-        else:
-            print("Diamonds",end="")
-
-    #Format of printing is "Your hand is: Ace of Spades and 10 of hearts"
+    #Format of printing is "Your hand is: Ace of Spades & 10 of hearts"
     def printHand(self):
         for i in range(len(self.cards)):
             if(i == len(self.cards)-1 and i != 0):
@@ -62,17 +41,19 @@ class player:
             elif(i > 0):
                 print(", ",end="")
 
-            self.printValue(self.cards[i].value)
-            print(" of ",end="")
-            self.printSuit(self.cards[i].suit)
+            print(self.cards[i].getValue() + " of " + self.cards[i].getSuit(),end="")
+
 
         print("")
         return
     
     def printHouse(self):
         print("The house has a ", end="")
-        self.printValue(self.cards[0].value)
-        print(" of ", end="")
-        self.printSuit(self.cards[0].suit)
+        print((self.cards[0]).getValue() + " of " + self.cards[0].getSuit(),end="")
         print(". Their other card is hidden!")
     
+    def win(self,money):
+        self.chips += money
+    
+    def loss(self,money):
+        self.chips -= money

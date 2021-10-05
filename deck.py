@@ -18,7 +18,7 @@ class deck:
         return self.cards.pop(index)
     
     #Resets the deck when the hand is over
-    def restockDeck(self,cards):
-        for i in range(len(cards)):
-            self.cards.append(cards[i])
+    def showDeck(self):
+        for i in range(len(self.cards)):
+            print(str(self.cards[i].value)+str(self.cards[i].suit))
         return
