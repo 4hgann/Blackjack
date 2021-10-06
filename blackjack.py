@@ -79,8 +79,7 @@ def playRound(house,user):
     os.system('cls||clear')
     print('The pot is: $' +str(pot))
 
-    #Debugging
-    house.printHand()
+    #house.printHand() Uncomment to see the dealers entire hand
     house.printHouse()
     print("Your hand is: ", end="")
     user.printHand()
